@@ -2,10 +2,46 @@ package com.santiago.hexagonal.infrastructure.web.http;
 
 import java.time.Instant;
 
-public record ErrorResponse(
-        Instant timestamp,
-        int status,
-        String error,
-        String message) {
+public class ErrorResponse {
+        private final Instant timestamp;
+        private final int status;
+        private final String error;
+        private final String message;
+        private final String cause;
 
+        public ErrorResponse(Instant timestamp, int status, String error, String message, String cause) {
+                this.timestamp = timestamp;
+                this.status = status;
+                this.error = error;
+                this.message = message;
+                this.cause = cause;
+        }
+
+        public ErrorResponse(Instant timestamp, int status, String error, String message) {
+                this.timestamp = timestamp;
+                this.status = status;
+                this.error = error;
+                this.message = message;
+                this.cause = null;
+        }
+
+        public Instant getTimestamp() {
+                return timestamp;
+        }
+
+        public int getStatus() {
+                return status;
+        }
+
+        public String getError() {
+                return error;
+        }
+
+        public String getMessage() {
+                return message;
+        }
+
+        public String getCause() {
+                return cause;
+        }
 }
