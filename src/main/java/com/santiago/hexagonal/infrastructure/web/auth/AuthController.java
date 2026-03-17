@@ -12,10 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.santiago.hexagonal.application.interfaces.IApplicationService;
 import com.santiago.hexagonal.application.port.in.SignInCommand;
-import com.santiago.hexagonal.application.usecase.SignInUseCase;
 import com.santiago.hexagonal.modules.user.application.port.in.RegisterUserCommand;
-import com.santiago.hexagonal.modules.user.application.usecase.*;
 import com.santiago.hexagonal.modules.user.domain.User;
 
 @RestController
@@ -23,9 +22,9 @@ import com.santiago.hexagonal.modules.user.domain.User;
 public class AuthController {
 
     @Autowired
-    private SignInUseCase signInUseCase;
+    private IApplicationService<SignInCommand, String> signInUseCase;
     @Autowired
-    private RegisterUseCase registerUseCase;
+    private IApplicationService<RegisterUserCommand, User> registerUseCase;
 
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody RegisterUserCommand command) {
