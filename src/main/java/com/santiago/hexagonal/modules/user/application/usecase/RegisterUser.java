@@ -13,12 +13,12 @@ import com.santiago.hexagonal.modules.user.domain.exceptions.UserExistsException
 import com.santiago.hexagonal.application.interfaces.UseCase;
 
 @UseCase
-public class RegisterUseCase implements IApplicationService<RegisterUserCommand, User> {
+public class RegisterUser implements IApplicationService<RegisterUserCommand, User> {
 
     private final IUserRepository userRepository;
     private final IPasswordEncoder passwordEncoder;
 
-    public RegisterUseCase(IUserRepository userRepository, IPasswordEncoder passwordEncoder) {
+    public RegisterUser(IUserRepository userRepository, IPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }

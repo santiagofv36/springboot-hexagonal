@@ -9,11 +9,11 @@ import com.santiago.hexagonal.modules.product.application.repository.IProductRep
 import com.santiago.hexagonal.modules.product.domain.Product;
 
 @UseCase
-public class GetProductByIdUseCase implements IApplicationService<GetProductByIdCommand, Product> {
+public class GetProductById implements IApplicationService<GetProductByIdCommand, Product> {
 
     private final IProductRepository productRepository;
 
-    public GetProductByIdUseCase(IProductRepository productRepository) {
+    public GetProductById(IProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 

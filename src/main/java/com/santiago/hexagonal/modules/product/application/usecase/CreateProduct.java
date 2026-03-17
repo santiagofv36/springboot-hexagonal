@@ -10,11 +10,11 @@ import com.santiago.hexagonal.modules.product.domain.exception.ProductRegistered
 import com.santiago.hexagonal.modules.product.domain.exception.InvalidProductException;
 
 @UseCase
-public class CreateProductUseCase implements IApplicationService<CreateProductCommand, Product> {
+public class CreateProduct implements IApplicationService<CreateProductCommand, Product> {
 
     private final IProductRepository productRepository;
 
-    public CreateProductUseCase(IProductRepository productRepository) {
+    public CreateProduct(IProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
