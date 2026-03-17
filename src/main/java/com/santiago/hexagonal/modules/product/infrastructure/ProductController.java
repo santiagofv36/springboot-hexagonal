@@ -28,7 +28,7 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<Void> createProduct(@RequestBody CreateProductCommand command) {
         Product product = createProductUseCase.execute(command);
-        return ResponseEntity.created(URI.create("/api/v1/products" + product.id().toString())).build();
+        return ResponseEntity.created(URI.create("/api/v1/products/" + product.id().toString())).build();
     }
 
     @GetMapping("/{id}")

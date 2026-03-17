@@ -29,7 +29,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody RegisterUserCommand command) {
         User user = registerUseCase.execute(command);
-        return ResponseEntity.created(URI.create("/api/v1/auth/sign-in" + user.id().toString())).build();
+        return ResponseEntity.created(URI.create("/api/v1/auth/register/" + user.id().toString())).build();
     }
 
     @PostMapping("/sign-in")
