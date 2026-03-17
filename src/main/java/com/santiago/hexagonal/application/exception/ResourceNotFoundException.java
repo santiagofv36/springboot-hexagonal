@@ -9,4 +9,9 @@ public class ResourceNotFoundException extends ApplicationException {
     public int getCode() {
         return 404;
     }
+
+    @Override
+    public Throwable getCause() {
+        return this.cause;
+    }
 }
