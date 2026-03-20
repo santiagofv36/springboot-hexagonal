@@ -12,7 +12,6 @@ public class PaginatedResult<T> {
     public static record PaginationInfo(
             int currentPage,
             int perPage,
-            int itemCount,
             int pageCount,
             boolean hasNext,
             boolean hasPrevious) {
@@ -41,7 +40,7 @@ public class PaginatedResult<T> {
         boolean hasNext = currentPage < pageCount - 1;
         boolean hasPrevious = currentPage > 0;
 
-        PaginationInfo paginationInfo = new PaginationInfo(currentPage, perPage, totalItems, pageCount, hasNext,
+        PaginationInfo paginationInfo = new PaginationInfo(currentPage + 1, perPage, pageCount, hasNext,
                 hasPrevious);
         return new PaginatedResult<>(totalItems, items, paginationInfo);
     }
