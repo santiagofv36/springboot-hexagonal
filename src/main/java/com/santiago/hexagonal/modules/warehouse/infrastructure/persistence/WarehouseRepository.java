@@ -30,7 +30,7 @@ public class WarehouseRepository implements IWarehouseRepository {
         try {
             return jpaWarehouseRepository.findByName(name).map(warehouseMapper::toDomain);
         } catch (Exception e) {
-            throw new DatabaseException("Error finding warehouse",e);
+            throw new DatabaseException("Error finding warehouse", e);
         }
     }
 
@@ -39,7 +39,7 @@ public class WarehouseRepository implements IWarehouseRepository {
         try {
             return jpaWarehouseRepository.findById(id).map(warehouseMapper::toDomain);
         } catch (Exception e) {
-            throw new DatabaseException("Error finding warehouse",e);
+            throw new DatabaseException("Error finding warehouse", e);
         }
     }
 
@@ -55,16 +55,14 @@ public class WarehouseRepository implements IWarehouseRepository {
 
     @Override
     public PaginatedResult<Warehouse> findAll(PageRequest pageRequest) {
-        int parsedPage = Math.max(0, pageRequest.page() - 1);
-        int parsedSize = Math.max(1, pageRequest.size());
         try {
             Page<WarehouseEntity> page = jpaWarehouseRepository.findAll(org.springframework.data.domain.PageRequest.of(
-                    parsedPage,
-                    parsedSize));
+                    pageRequest.page(),
+                    pageRequest.size()));
             List<Warehouse> items = page.getContent().stream().map(warehouseMapper::toDomain).toList();
             return PaginatedResult.of(items, page.getNumber(), page.getSize(), (int) page.getTotalElements());
         } catch (Exception e) {
-            throw new DatabaseException("Error finding warehouses",e);
+            throw new DatabaseException("Error finding warehouses", e);
         }
     }
 

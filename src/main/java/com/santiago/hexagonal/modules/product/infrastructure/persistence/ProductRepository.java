@@ -55,12 +55,10 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public PaginatedResult<Product> findAll(PageRequest pageRequest) {
-        int parsedPage = Math.max(0, pageRequest.page() - 1);
-        int parsedSize = Math.max(1, pageRequest.size());
         try {
             Page<ProductEntity> page = jpaProductRepository.findAll(org.springframework.data.domain.PageRequest.of(
-                    parsedPage,
-                    parsedSize));
+                    pageRequest.page(),
+                    pageRequest.size()));
             List<Product> items = page.getContent().stream().map(productMapper::toDomain).toList();
             return PaginatedResult.of(items, page.getNumber(), page.getSize(), (int) page.getTotalElements());
         } catch (Exception e) {
