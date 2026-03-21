@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import com.santiago.hexagonal.application.interfaces.IApplicationService;
 import com.santiago.hexagonal.application.interfaces.UseCase;
+import com.santiago.hexagonal.application.port.in.Authenticated;
 import com.santiago.hexagonal.modules.inventory.application.port.in.CreateInventoryCommand;
 import com.santiago.hexagonal.modules.inventory.application.repository.IInventoryRepository;
 import com.santiago.hexagonal.modules.inventory.domain.Inventory;
@@ -27,6 +28,7 @@ public class CreateInventory implements IApplicationService<CreateInventoryComma
     }
 
     @Override
+    @Authenticated
     public Inventory execute(CreateInventoryCommand command) {
 
         validate(command);

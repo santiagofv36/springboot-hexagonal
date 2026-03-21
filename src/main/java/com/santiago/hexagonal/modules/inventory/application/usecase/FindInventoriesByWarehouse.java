@@ -2,6 +2,7 @@ package com.santiago.hexagonal.modules.inventory.application.usecase;
 
 import com.santiago.hexagonal.application.interfaces.IApplicationService;
 import com.santiago.hexagonal.application.interfaces.UseCase;
+import com.santiago.hexagonal.application.port.in.Authenticated;
 import com.santiago.hexagonal.domain.pagination.PaginatedResult;
 import com.santiago.hexagonal.modules.inventory.application.port.in.GetInventoriesByWarehouseCommand;
 import com.santiago.hexagonal.modules.inventory.application.port.out.InventoryResponse;
@@ -19,6 +20,7 @@ public class FindInventoriesByWarehouse
     }
 
     @Override
+    @Authenticated
     public PaginatedResult<InventoryResponse> execute(GetInventoriesByWarehouseCommand command) {
 
         if (command.id() == null) {
